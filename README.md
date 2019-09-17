@@ -74,6 +74,6 @@ CUDA是NVIDIA推出的运算平台，CuDNN是专门针对Deep Learning框架设�
 3）CuDNN下载地址：https://developer.nvidia.com/rdp/cudnn-download
 
 这里我将用于学习无人驾驶仿真平台的研究与学习记录、将来会不断完善。
-参考文献：
-1）https://github.com/microsoft/AirSim
+参考文献：	
+1）https://github.com/microsoft/AirSim	
 2）https://github.com/microsoft/AutonomousDrivingCookbook/tree/master/AirSimE2EDeepLearning
