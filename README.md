@@ -27,17 +27,17 @@ raspberry pi
 
 OS：win10 专业版
 
-Unreal Engine 4 4.18
+Unreal Engine 4  4.18.3
 
-Python 3.6.8
+Python 3.6.2
 
 OpenCV 4.1.0
 
-Keras 2.2.4
+Keras 2.0.9
 
-TensorFlow 1.2.1
+Numpy 1.17.1
 
- 
+TensorFlow 1.14.1
 
 硬件：
 
