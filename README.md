@@ -51,48 +51,36 @@ GPU: Nvidia GeForce GTX 1060 3GB
 
 5.制作步骤
 5.1搭建环境
-5.1.1搭建AirSim
-想要使用 Unreal Engine，我们需要下载 Epic 开发的 Epic Games Launcher。然后，从 Epic Games Launcher 中再下载所需要版本的 Unreal Engine。注意开始的时候可能找不到 4.18.3，注意版本号旁边有一个小三角，下拉可以选择版本。
-
-选择 Epic Games Launcher 中左侧的 Learn，然后在右侧的页面中一直下拉找到 Landscape Mountains点进去。这个场景是官方教程使用的。选择 Create Project，然后选择一个路径存下创建工程时，一定要把工程与位置名称改为英文，默认是中文。这个场景是比较小的，不过也有 2G 左右。请耐心等待。下载好场景，Unreal Engine 4这一块的任务就基本完成。
-
-打开vs的命令行，进入AirSim的路径下，输入build.cmd，进行构建，一段时间后，构建完成。
+5.1.1搭建AirSim场景
+引擎：想要使用 Unreal Engine，我们需要下载 Epic 开发的 Epic Games Launcher。然后，从 Epic Games Launcher 中再下载所需要版本的 Unreal Engine。
+场景：选择 Epic Games Launcher 中左侧的 Learn，然后在右侧的页面中一直下拉找到 Landscape Mountains点进去。这个场景是官方教程使用的。选择 Create Project，然后选择一个路径存下创建工程时，一定要把工程与位置名称改为英文，默认是中文。下载好场景，Unreal Engine 4这一块的任务就基本完成。
 
 *官方文档特别强调需要使用 4.18 版本，否则可能不成功。低版本自然不行，高版本也可能带来问题。
-
 5.1.2 搭建后端环境
 克隆airsim：
-
 这里介绍Visual Studio 2017克隆Github上项目的方法。
-
-打开vs2017菜单里的“团队”，点击管理链接，进入右侧的团队资源管理器，克隆本地GIT存储库，第一行输入 https://github.com/Microsoft/AirSim
-
+打开vs2017菜单里的“团队”，点击管理链接，进入右侧的团队资源管理器，克隆本地GIT存储库，第一行输入 https://github.com/Microsoft/AirSim 
 第二行选择存放地址，点击克隆。
+克隆完成后，打开vs的命令行，进入AirSim的路径下，输入build.cmd，进行构建。一段时间后，关闭cmd窗口，打开AirSim的克隆路径下\AirSim\AirLib\deps\eigen3\Eigen\src\Core\arch\CUDA\Half.h 这个文件，找到“AS IS”这个引用符号，将它的改为英文引用符号，保存文件。再以同样的方法运行build.cmd，一段时间后，运行成功，airsim后端构建成功。
 
- 
-
-*在AirSim的克隆路径下打开  \AirSim\AirLib\deps\eigen3\Eigen\src\Core\arch\CUDA\Half.h 这个文件，找到“AS IS”这个引用符号，将它的改为英文引用符号，保存文件。
-
- 
-
-
- 
-
-安装Python库：
-
+安装Python相关库：
 使用Python 3.5或更高版本安装Anaconda。
+1.	安装CNTK或安装Tensorflow（建议在GPU上运行TF）
+2.	安装h5py
+3.	安装Keras并配置Keras后端以使用TensorFlow（默认）或CNTK。
+4.	安装AzCopy。请务必将AzCopy可执行文件的位置添加到系统路径中。
+5.	安装其他依赖项。在您的anaconda环境中，以root或管理员身份运行“InstallPackages.py”。
 
-1.安装CNTK或安装Tensorflow
+配置CUDA：
+CUDA是NVIDIA推出的运算平台，CuDNN是专门针对Deep Learning框架设计的一套GPU计算加速方案。
+在安装之前要查询下最新TensorFLow发行版支持到了哪个版本。笔者在安装TensorFLow时，CUDA已经到了10.1版本。另外，也要确认CUDA版本是否支持自己的显卡。基于以上两个条件，笔者选择了CUDA10.0，并下载了对应的CuDNN版本。
 
-2.安装h5py
+*在CPU上运行TensorFlow则跳过此步。
+*相关链接如下：
+1）显卡型号支持：https://developer.nvidia.com/cuda-gpus
+2）CUDA下载地址：https://developer.nvidia.com/cuda-toolkit-archive
+3）CuDNN下载地址：https://developer.nvidia.com/rdp/cudnn-download
 
-3.安装Keras并配置Keras后端以使用TensorFlow（默认）或CNTK。
-
-4.安装AzCopy。请务必将AzCopy可执行文件的位置添加到系统路径中。
-
-5.安装其他依赖项。在您的anaconda环境中，以root或管理员身份运行“InstallPackages.py”。
-
- 
 
 5.2 数据探索与准备
 概述
